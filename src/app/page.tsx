@@ -369,7 +369,7 @@ export default function Home() {
             { src: '/collection/cl1.svg', title: 'Bestsellers', alt: 'Bestsellers - Mozimo chocolate bars with geometric patterns' },
             { src: '/collection/cl2.svg', title: 'New Arrivals', alt: 'New Arrivals - Stacked chocolate barks with nuts and toppings' },
             { src: '/collection/cl3.svg', title: 'Gift Collection', alt: 'Gift Collection - Mozimo packaged chocolate products and gift items' }
-          ].map((item, index) => (
+          ].map((item) => (
             <motion.div
               key={item.title}
               variants={fadeInUp}
