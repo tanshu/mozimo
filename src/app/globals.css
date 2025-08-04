@@ -5,9 +5,23 @@
 /* Renner font */
 @font-face {
   font-family: 'Renner*';
-  src: url('/fonts/Renner-Light.woff2') format('woff2'),
-       url('/fonts/Renner-Light.woff') format('woff');
+  src: url('/fonts/RENNER_ 300 LIGHT.OTF') format('opentype');
   font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Renner*';
+  src: url('/fonts/RENNER_ 500 MEDIUM.OTF') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Renner*';
+  src: url('/fonts/RENNER_ 700 BOLD.OTF') format('opentype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -15,7 +29,7 @@
 /* Samantha Signature font */
 @font-face {
   font-family: 'Samantha Signature';
-  src: url('/fonts/Samantha-Signature.ttf') format('truetype');
+  src: url('/fonts/SAMANTHA SIGNATURE.OTF') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -24,7 +38,7 @@
 /* MonetaSans-Regular font */
 @font-face {
   font-family: 'MonetaSans-Regular';
-  src: url('/fonts/MonetaSans-Regular.ttf') format('truetype');
+  src: url('/fonts/MONETASANS-REGULAR.OTF') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
