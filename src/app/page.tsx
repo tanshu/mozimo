@@ -140,7 +140,7 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInLeft}
-            className="space-y-6 md:space-y-8 order-2 lg:order-1"
+            className="space-y-6 md:space-y-8 order-2 lg:order-1 px-4 md:px-0" // ← Added mobile padding
           >
             <motion.h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#3C2A21] font-moneta text-gradient"
@@ -215,10 +215,10 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInRight}
-            className="relative order-1 lg:order-2"
+            className="relative order-1 lg:order-2 w-screen md:w-auto -mx-4 md:mx-0" // ← Made full-width on mobile
           >
             <motion.div
-              className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-xl overflow-hidden shadow-premium hover:shadow-premium-hover transition-all duration-500"
+              className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-none md:rounded-xl overflow-hidden shadow-premium hover:shadow-premium-hover transition-all duration-500" // ← Removed rounded corners on mobile
               whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.3 },
@@ -258,10 +258,10 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInLeft}
-            className="relative order-1 lg:order-1"
+            className="relative order-1 lg:order-1 w-screen md:w-auto -mx-4 md:mx-0" // ← Added for mobile edge-to-edge
           >
             <motion.div
-              className="relative w-full h-[400px] md:h-[500px] lg:h-[700px] rounded-xl overflow-hidden shadow-premium hover:shadow-premium-hover transition-all duration-500"
+              className="relative w-full h-[400px] md:h-[500px] lg:h-[700px] rounded-none md:rounded-xl overflow-hidden shadow-premium hover:shadow-premium-hover transition-all duration-500" // ← Changed to rounded-none for mobile
               whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.3 },
@@ -289,7 +289,7 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInRight}
-            className="space-y-4 md:space-y-6 order-2 lg:order-2"
+            className="space-y-4 md:space-y-6 order-2 lg:order-2 px-4 md:px-0" // ← Added px-4 for mobile padding
           >
             <div className="space-y-3 md:space-y-4">
               <motion.h2
@@ -379,7 +379,7 @@ export default function Home() {
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-4 px-4 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
@@ -405,12 +405,12 @@ export default function Home() {
             <motion.div
               key={item.title}
               variants={fadeInUp}
-              className="group flex flex-col items-center justify-end transition-all duration-500 hover:-translate-y-2"
+              className="snap-start w-[calc(50%)] flex-shrink-0 sm:w-auto sm:flex-shrink sm:min-w-0 group flex flex-col items-center justify-end transition-all duration-500 hover:-translate-y-2"
               whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.3 },
               }}
-              style={{ minHeight: "480px" }}
+              // style={{ minHeight: "480px" }}
             >
               <Image
                 src={item.src}
@@ -454,9 +454,9 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInLeft}
-            className="flex flex-col justify-center h-full bg-white px-4 md:px-8 py-8 md:py-12 order-2 lg:order-1"
+            className="flex flex-col justify-center h-full bg-white px-4 md:px-8 py-6 md:py-12 order-2 lg:order-1"
           >
-            <ul className="space-y-2 md:space-y-4">
+            <ul className="space-y-4 md:space-y-6">
               {categories.map((category, idx) => (
                 <motion.li
                   key={category}
@@ -466,41 +466,53 @@ export default function Home() {
                   viewport={{ once: true }}
                 >
                   <button
-                    className={`transition-all duration-700 ease-out text-left w-full font-moneta text-[#703133] hover:scale-105 ${
-                      idx === currentCategory
-                        ? "text-3xl md:text-5xl lg:text-7xl font-normal"
-                        : "text-2xl md:text-4xl lg:text-5xl font-light opacity-60"
-                    }`}
+                    className={`group flex items-center gap-4 transition-all duration-700 ease-out w-full text-left font-moneta hover:scale-105
+                ${
+                  idx === currentCategory
+                    ? "text-[#703133] font-normal"
+                    : "text-[#703133] opacity-60 font-light"
+                }
+              `}
                     style={{
                       fontFamily: "MonetaSans-Regular",
                       fontWeight: idx === currentCategory ? 400 : 300,
                       fontSize:
                         idx === currentCategory
-                          ? "clamp(32px, 6vw, 72px)"
-                          : "clamp(24px, 4vw, 56px)",
+                          ? "clamp(22px, 5vw, 64px)"
+                          : "clamp(18px, 4vw, 56px)",
                       lineHeight: "120%",
                       letterSpacing: "0%",
-                      color: "#703133",
                       transition: "all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)",
                     }}
-                    tabIndex={-1}
                     onClick={() => setCurrentCategory(idx)}
                     onMouseEnter={() => setCurrentCategory(idx)}
+                    tabIndex={-1}
                   >
-                    {category}
+                    {/* Show only on mobile */}
+                    <div className="block lg:hidden w-10 h-10 rounded-full overflow-hidden shrink-0">
+                      <img
+                        src={categoryImages[idx]}
+                        alt={category}
+                        className="w-full h-full object-cover"
+                        draggable={false}
+                      />
+                    </div>
+
+                    {/* Category name */}
+                    <span className="text-left">{category}</span>
                   </button>
                 </motion.li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Right Column - Category Image */}
+          {/* Right Column - Large Category Image (desktop only) */}
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInRight}
-            className="relative flex items-center justify-center h-full min-h-[300px] md:min-h-[400px] bg-white order-1 lg:order-2"
+            className="relative hidden lg:flex items-center justify-center h-full min-h-[300px] md:min-h-[400px] bg-white order-1 lg:order-2"
           >
             <AnimatePresence mode="wait">
               <motion.img
@@ -543,14 +555,13 @@ export default function Home() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
+        <div className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-4 px-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
           {loading ? (
-            // Loading state
             <>
               {[1, 2, 3].map((i) => (
                 <motion.div
                   key={i}
-                  className="bg-white rounded-lg shadow-premium h-64 md:h-96 skeleton"
+                  className="bg-white rounded-lg shadow-premium h-64 md:h-96 skeleton snap-start w-[calc(80vw-1rem)] flex-shrink-0 sm:w-auto"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
@@ -559,10 +570,8 @@ export default function Home() {
               ))}
             </>
           ) : error ? (
-            // Error state - fallback to static content
             isTokenExpired ? (
-              // Token expired state
-              <div className="col-span-full text-center py-12">
+              <div className="col-span-full text-center py-12 sm:col-span-2 lg:col-span-3">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -593,7 +602,7 @@ export default function Home() {
                   whileInView="animate"
                   viewport={{ once: true, margin: "-50px" }}
                   variants={fadeInLeft}
-                  className="bg-white rounded-lg shadow-premium overflow-hidden hover:shadow-premium-hover transition-all duration-500 transform hover:-translate-y-2"
+                  className="bg-white rounded-lg shadow-premium overflow-hidden hover:shadow-premium-hover transition-all duration-500 transform hover:-translate-y-2 snap-start w-[calc(80vw-1rem)] flex-shrink-0 sm:w-auto"
                   whileHover={{ scale: 1.02 }}
                 >
                   <div className="relative h-64 md:h-96 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
@@ -623,7 +632,7 @@ export default function Home() {
                   whileInView="animate"
                   viewport={{ once: true, margin: "-50px" }}
                   variants={fadeInUp}
-                  className="bg-white rounded-lg shadow-premium overflow-hidden hover:shadow-premium-hover transition-all duration-500 transform hover:-translate-y-2"
+                  className="bg-white rounded-lg shadow-premium overflow-hidden hover:shadow-premium-hover transition-all duration-500 transform hover:-translate-y-2 snap-start w-[calc(80vw-1rem)] flex-shrink-0 sm:w-auto"
                   whileHover={{ scale: 1.02 }}
                 >
                   <div className="p-4 md:p-6">
@@ -661,7 +670,7 @@ export default function Home() {
                   whileInView="animate"
                   viewport={{ once: true, margin: "-50px" }}
                   variants={fadeInRight}
-                  className="bg-white rounded-lg shadow-premium overflow-hidden hover:shadow-premium-hover transition-all duration-500 transform hover:-translate-y-2"
+                  className="bg-white rounded-lg shadow-premium overflow-hidden hover:shadow-premium-hover transition-all duration-500 transform hover:-translate-y-2 snap-start w-[calc(80vw-1rem)] flex-shrink-0 sm:w-auto"
                   whileHover={{ scale: 1.02 }}
                 >
                   <div className="p-4 md:p-6 text-center">
@@ -684,7 +693,6 @@ export default function Home() {
               </>
             )
           ) : (
-            // Real Instagram posts
             posts?.slice(0, 3).map((post, index) => (
               <motion.div
                 key={post.id}
@@ -698,7 +706,7 @@ export default function Home() {
                     ? fadeInUp
                     : fadeInRight
                 }
-                className="bg-white rounded-lg shadow-premium overflow-hidden hover:shadow-premium-hover transition-all duration-500 transform hover:-translate-y-2"
+                className="snap-start w-[calc(80vw-1rem)] flex-shrink-0 sm:w-auto bg-white rounded-lg shadow-premium overflow-hidden hover:shadow-premium-hover transition-all duration-500 transform hover:-translate-y-2"
                 whileHover={{ scale: 1.02 }}
               >
                 <a
@@ -716,14 +724,11 @@ export default function Home() {
                       draggable={false}
                       quality={85}
                       onError={(e) => {
-                        // Fallback to a placeholder if image fails to load
                         const target = e.target as HTMLImageElement;
                         target.src = "/bst/bs1.svg";
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-
-                    {/* Video indicator */}
                     {post.mediaType === "VIDEO" && (
                       <div className="absolute top-4 right-4 bg-black/50 rounded-full p-2">
                         <svg
@@ -735,7 +740,6 @@ export default function Home() {
                         </svg>
                       </div>
                     )}
-
                     <div className="absolute bottom-4 left-4 right-4">
                       <div className="glass rounded-lg p-3 border border-white/20">
                         <p className="text-sm text-gray-800 line-clamp-2">

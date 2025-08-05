@@ -75,11 +75,9 @@ export default function Header() {
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
       >
-        <nav
-          className={`bg-white border border-white/20 shadow-premium w-full h-full flex justify-between items-center rounded-none`}
-        >
-          <div className="flex justify-between items-center w-full px-4">
-            {/* Mobile Hamburger Menu */}
+        <nav className="relative bg-white border border-white/20 shadow-premium w-full h-full flex items-center px-4">
+          {/* Left: Hamburger Menu */}
+          <div className="absolute left-4 top-1/2 -translate-y-1/2">
             <motion.button
               className="hamburger-button p-2 text-gray-800 hover:text-[#8B4513] transition-all duration-300 relative min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/20 backdrop-blur-sm"
               whileHover={{ scale: 1.1 }}
@@ -110,10 +108,12 @@ export default function Header() {
                 />
               </div>
             </motion.button>
+          </div>
 
-            {/* Center Logo */}
+          {/* Center: Logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
             <motion.div
-              className="flex items-center justify-center absolute left-1/2 transform -translate-x-1/2"
+              className="flex items-center justify-center"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -143,9 +143,72 @@ export default function Header() {
                 />
               </motion.div>
             </motion.div>
+          </div>
 
-            {/* Mobile Right Side - Empty space to balance layout */}
-            <div className="w-10 h-10"></div>
+          {/* Right: Action Buttons */}
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-1">
+            <motion.button
+              className="p-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Search"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 28 28"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </motion.button>
+
+            <motion.button
+              className="p-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Shopping bag"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 28 28"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1}
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                />
+              </svg>
+            </motion.button>
+
+            <motion.button
+              className="p-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="User account"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 28 28"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1}
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+            </motion.button>
           </div>
         </nav>
       </motion.header>
@@ -404,70 +467,6 @@ export default function Header() {
                   >
                     Categories
                   </motion.a>
-                </div>
-
-                {/* Mobile Action Buttons */}
-                <div className="flex space-x-4 pt-4">
-                  <motion.button
-                    className="flex-1 p-3 text-gray-800 hover:text-[#8B4513] transition-all duration-300 relative min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/20 backdrop-blur-sm border border-gray-200"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label="Search"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      />
-                    </svg>
-                  </motion.button>
-                  <motion.button
-                    className="flex-1 p-3 text-gray-800 hover:text-[#8B4513] transition-all duration-300 relative min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/20 backdrop-blur-sm border border-gray-200"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label="Shopping bag"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                      />
-                    </svg>
-                  </motion.button>
-                  <motion.button
-                    className="flex-1 p-3 text-gray-800 hover:text-[#8B4513] transition-all duration-300 relative min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/20 backdrop-blur-sm border border-gray-200"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label="User account"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
-                  </motion.button>
                 </div>
               </div>
             </motion.div>
