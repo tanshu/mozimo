@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,38 +14,41 @@ export default function Header() {
       setIsScrolled(scrollPosition > 100);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
-      if (!target.closest('.mobile-menu') && !target.closest('.hamburger-button')) {
+      if (
+        !target.closest(".mobile-menu") &&
+        !target.closest(".hamburger-button")
+      ) {
         setIsMobileMenuOpen(false);
       }
     };
 
     if (isMobileMenuOpen) {
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [isMobileMenuOpen]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
@@ -60,23 +63,21 @@ export default function Header() {
         className="fixed top-0 z-[60] w-full md:hidden"
         initial={false}
         animate={{
-          width: '100%',
-          left: '0%',
-          x: '0%',
-          top: isScrolled ? '0px' : '12px',
-          borderRadius: '0px',
-          height: isScrolled ? '64px' : '60px',
+          width: "100%",
+          left: "0%",
+          x: "0%",
+          top: isScrolled ? "0px" : "12px",
+          borderRadius: "0px",
+          height: isScrolled ? "64px" : "60px",
         }}
         transition={{
           duration: 0.5,
-          ease: [0.25, 0.46, 0.45, 0.94]
+          ease: [0.25, 0.46, 0.45, 0.94],
         }}
       >
-        <nav
-          className={`glass border border-white/20 shadow-premium w-full h-full flex justify-between items-center rounded-none`}
-        >
-          <div className="flex justify-between items-center w-full px-4">
-            {/* Mobile Hamburger Menu */}
+        <nav className="relative bg-white border border-white/20 shadow-premium w-full h-full flex items-center px-4">
+          {/* Left: Hamburger Menu */}
+          <div className="absolute left-4 top-1/2 -translate-y-1/2">
             <motion.button
               className="hamburger-button p-2 text-gray-800 hover:text-[#8B4513] transition-all duration-300 relative min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/20 backdrop-blur-sm"
               whileHover={{ scale: 1.1 }}
@@ -107,24 +108,26 @@ export default function Header() {
                 />
               </div>
             </motion.button>
+          </div>
 
-            {/* Center Logo */}
+          {/* Center: Logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
             <motion.div
-              className="flex items-center justify-center absolute left-1/2 transform -translate-x-1/2"
+              className="flex items-center justify-center"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.div 
+              <motion.div
                 className="relative w-10 h-10"
                 animate={{
                   scale: isScrolled ? 1.1 : 1,
                 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.15,
                   rotate: 5,
-                  transition: { duration: 0.3 }
+                  transition: { duration: 0.3 },
                 }}
               >
                 <Image
@@ -140,9 +143,72 @@ export default function Header() {
                 />
               </motion.div>
             </motion.div>
+          </div>
 
-            {/* Mobile Right Side - Empty space to balance layout */}
-            <div className="w-10 h-10"></div>
+          {/* Right: Action Buttons */}
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-1">
+            <motion.button
+              className="p-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Search"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 28 28"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </motion.button>
+
+            <motion.button
+              className="p-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Shopping bag"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 28 28"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1}
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                />
+              </svg>
+            </motion.button>
+
+            <motion.button
+              className="p-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="User account"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 28 28"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1}
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+            </motion.button>
           </div>
         </nav>
       </motion.header>
@@ -152,21 +218,21 @@ export default function Header() {
         className="fixed top-0 z-50 hidden md:block"
         initial={false}
         animate={{
-          width: isScrolled ? '100%' : '1440px',
-          left: isScrolled ? '0%' : '50%',
-          x: isScrolled ? '0%' : '-50%',
-          top: isScrolled ? '0px' : '24px',
-          borderRadius: isScrolled ? '0px' : '15px',
-          height: isScrolled ? '64px' : '80px',
+          width: isScrolled ? "100%" : "1440px",
+          left: isScrolled ? "0%" : "50%",
+          x: isScrolled ? "0%" : "-50%",
+          top: isScrolled ? "0px" : "24px",
+          borderRadius: isScrolled ? "0px" : "15px",
+          height: isScrolled ? "64px" : "80px",
         }}
         transition={{
           duration: 0.5,
-          ease: [0.25, 0.46, 0.45, 0.94]
+          ease: [0.25, 0.46, 0.45, 0.94],
         }}
       >
         <nav
-          className={`glass border border-white/20 shadow-premium w-full h-full flex justify-between items-center ${
-            isScrolled ? 'rounded-none' : 'rounded-[15px]'
+          className={`bg-white border border-white/20 shadow-premium w-full h-full flex justify-between items-center ${
+            isScrolled ? "rounded-none" : "rounded-[15px]"
           }`}
         >
           <div className="flex justify-between items-center w-full px-20">
@@ -177,10 +243,10 @@ export default function Header() {
                 className="text-gray-800 hover:text-[#8B4513] transition-all duration-300 font-renner relative group"
                 style={{
                   fontWeight: 100,
-                  fontFamily: 'Renner',
-                  fontSize: '18px',
-                  lineHeight: '100%',
-                  letterSpacing: '0%'
+                  fontFamily: "Renner",
+                  fontSize: "18px",
+                  lineHeight: "100%",
+                  letterSpacing: "0%",
                 }}
                 whileHover={{ scale: 1.02 }}
               >
@@ -192,10 +258,10 @@ export default function Header() {
                 className="text-gray-800 hover:text-[#8B4513] transition-all duration-300 font-renner relative group"
                 style={{
                   fontWeight: 100,
-                  fontFamily: 'Renner',
-                  fontSize: '18px',
-                  lineHeight: '100%',
-                  letterSpacing: '0%'
+                  fontFamily: "Renner",
+                  fontSize: "18px",
+                  lineHeight: "100%",
+                  letterSpacing: "0%",
                 }}
                 whileHover={{ scale: 1.02 }}
               >
@@ -211,16 +277,16 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.div 
+              <motion.div
                 className="relative w-12 h-12"
                 animate={{
                   scale: isScrolled ? 1.1 : 1,
                 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.15,
                   rotate: 5,
-                  transition: { duration: 0.3 }
+                  transition: { duration: 0.3 },
                 }}
               >
                 <Image
@@ -244,36 +310,51 @@ export default function Header() {
                 className="flex items-center space-x-1 text-gray-800 hover:text-[#8B4513] transition-all duration-300 font-renner relative group"
                 style={{
                   fontWeight: 100,
-                  fontFamily: 'Renner',
-                  fontSize: '18px',
-                  lineHeight: '100%',
-                  letterSpacing: '0%'
+                  fontFamily: "Renner",
+                  fontSize: "18px",
+                  lineHeight: "100%",
+                  letterSpacing: "0%",
                 }}
                 whileHover={{ scale: 1.02 }}
                 aria-label="More options"
               >
                 <span>More</span>
-                <motion.svg 
-                  className="w-4 h-4" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <motion.svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                   animate={{ rotate: 0 }}
                   whileHover={{ rotate: 180 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
                 </motion.svg>
               </motion.button>
-              
+
               <motion.button
                 className="p-3 text-gray-800 hover:text-[#8B4513] transition-all duration-300 relative min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/20 backdrop-blur-sm"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="User account"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
                 </svg>
               </motion.button>
               <motion.button
@@ -282,8 +363,18 @@ export default function Header() {
                 whileTap={{ scale: 0.95 }}
                 aria-label="Search"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
               </motion.button>
               <motion.button
@@ -292,8 +383,18 @@ export default function Header() {
                 whileTap={{ scale: 0.95 }}
                 aria-label="Shopping bag"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                  />
                 </svg>
               </motion.button>
             </div>
@@ -326,10 +427,10 @@ export default function Header() {
                     className="block text-lg font-renner text-gray-800 hover:text-[#8B4513] transition-all duration-300 py-3 border-b border-gray-100"
                     style={{
                       fontWeight: 300,
-                      fontFamily: 'Renner',
-                      fontSize: '18px',
-                      lineHeight: '100%',
-                      letterSpacing: '0%'
+                      fontFamily: "Renner",
+                      fontSize: "18px",
+                      lineHeight: "100%",
+                      letterSpacing: "0%",
                     }}
                     onClick={() => setIsMobileMenuOpen(false)}
                     whileHover={{ x: 10 }}
@@ -341,10 +442,10 @@ export default function Header() {
                     className="block text-lg font-renner text-gray-800 hover:text-[#8B4513] transition-all duration-300 py-3 border-b border-gray-100"
                     style={{
                       fontWeight: 300,
-                      fontFamily: 'Renner',
-                      fontSize: '18px',
-                      lineHeight: '100%',
-                      letterSpacing: '0%'
+                      fontFamily: "Renner",
+                      fontSize: "18px",
+                      lineHeight: "100%",
+                      letterSpacing: "0%",
                     }}
                     onClick={() => setIsMobileMenuOpen(false)}
                     whileHover={{ x: 10 }}
@@ -356,50 +457,16 @@ export default function Header() {
                     className="block text-lg font-renner text-gray-800 hover:text-[#8B4513] transition-all duration-300 py-3 border-b border-gray-100"
                     style={{
                       fontWeight: 300,
-                      fontFamily: 'Renner',
-                      fontSize: '18px',
-                      lineHeight: '100%',
-                      letterSpacing: '0%'
+                      fontFamily: "Renner",
+                      fontSize: "18px",
+                      lineHeight: "100%",
+                      letterSpacing: "0%",
                     }}
                     onClick={() => setIsMobileMenuOpen(false)}
                     whileHover={{ x: 10 }}
                   >
                     Categories
                   </motion.a>
-                </div>
-
-                {/* Mobile Action Buttons */}
-                <div className="flex space-x-4 pt-4">
-                  <motion.button
-                    className="flex-1 p-3 text-gray-800 hover:text-[#8B4513] transition-all duration-300 relative min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/20 backdrop-blur-sm border border-gray-200"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label="Search"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                  </motion.button>
-                  <motion.button
-                    className="flex-1 p-3 text-gray-800 hover:text-[#8B4513] transition-all duration-300 relative min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/20 backdrop-blur-sm border border-gray-200"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label="Shopping bag"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                  </motion.button>
-                  <motion.button
-                    className="flex-1 p-3 text-gray-800 hover:text-[#8B4513] transition-all duration-300 relative min-h-[40px] flex items-center justify-center rounded-full hover:bg-white/20 backdrop-blur-sm border border-gray-200"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label="User account"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </motion.button>
                 </div>
               </div>
             </motion.div>
@@ -408,4 +475,4 @@ export default function Header() {
       </AnimatePresence>
     </>
   );
-} 
+}
