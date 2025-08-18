@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const banners = [
-  { id: 1, src: '/banners/b1.svg', alt: 'Mozimo Chocolate Banner 1' },
-  { id: 2, src: '/banners/b2.svg', alt: 'Mozimo Chocolate Banner 2' },
-  { id: 3, src: '/banners/b3.svg', alt: 'Mozimo Chocolate Banner 3' },
-  { id: 4, src: '/banners/b4.svg', alt: 'Mozimo Chocolate Banner 4' },
+  { id: 1, src: "/banners/b1.svg", alt: "Mozimo Chocolate Banner 1" },
+  { id: 2, src: "/banners/b3.svg", alt: "Mozimo Chocolate Banner 2" },
+  { id: 3, src: "/banners/b2.svg", alt: "Mozimo Chocolate Banner 3" },
+  { id: 4, src: "/banners/b4.svg", alt: "Mozimo Chocolate Banner 4" },
 ];
 
 export default function BannerSlider() {
@@ -17,7 +17,7 @@ export default function BannerSlider() {
   const [showArrows, setShowArrows] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // Auto-advance slider
   useEffect(() => {
     const timer = setInterval(() => {
@@ -37,7 +37,7 @@ export default function BannerSlider() {
 
   const goToPrevious = () => {
     setDirection(-1);
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? banners.length - 1 : prevIndex - 1
     );
   };
@@ -49,7 +49,7 @@ export default function BannerSlider() {
 
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? '100%' : '-100%',
+      x: direction > 0 ? "100%" : "-100%",
       opacity: 1,
     }),
     center: {
@@ -57,9 +57,9 @@ export default function BannerSlider() {
       opacity: 1,
     },
     exit: (direction: number) => ({
-      x: direction < 0 ? '100%' : '-100%',
+      x: direction < 0 ? "100%" : "-100%",
       opacity: 1,
-    })
+    }),
   };
 
   const swipeConfidenceThreshold = 10000;
@@ -76,7 +76,7 @@ export default function BannerSlider() {
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="relative w-full h-[calc(100vh-80px)] md:h-screen overflow-hidden bg-gradient-to-br from-[#1a0f0a] to-[#2d1810]"
       onMouseEnter={() => {
@@ -105,7 +105,7 @@ export default function BannerSlider() {
           exit="exit"
           transition={{
             x: { type: "spring", stiffness: 300, damping: 30 },
-            duration: 0.4
+            duration: 0.4,
           }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
@@ -128,41 +128,43 @@ export default function BannerSlider() {
             className="object-cover img-premium"
             draggable={false}
             priority={currentIndex === 0}
-            loading={currentIndex === 0 ? 'eager' : 'lazy'}
+            loading={currentIndex === 0 ? "eager" : "lazy"}
             sizes="100vw"
             quality={85}
           />
-          
+
           {/* Premium overlay with gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </motion.div>
       </AnimatePresence>
 
       {/* Premium Shop Now Button */}
-      <div className="absolute bottom-16 md:bottom-20 left-1/2 transform -translate-x-1/2 z-10">
-        <motion.button
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          whileHover={{ 
-            scale: 1.05,
-            y: -2,
-            transition: { duration: 0.3 }
-          }}
-          whileTap={{ scale: 0.95 }}
-          className="glass text-[#3C2A21] px-8 md:px-12 py-4 md:py-5 rounded-full font-semibold text-base md:text-lg shadow-premium hover:shadow-premium-hover transition-all duration-300 font-renner border border-white/20 hover:border-white/40"
-          style={{
-            fontWeight: 300,
-            fontSize: '16px',
-            lineHeight: '100%',
-            letterSpacing: '0%',
-            fontFamily: 'Renner'
-          }}
-        >
-          <span className="relative z-10">Shop Now</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700 ease-out rounded-full" />
-        </motion.button>
-      </div>
+      {currentIndex === 0 && (
+        <div className="absolute bottom-16 md:bottom-20 left-1/2 transform -translate-x-1/2 z-10">
+          <motion.button
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            whileHover={{
+              scale: 1.05,
+              y: -2,
+              transition: { duration: 0.3 },
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-white text-[#3C2A21] px-8 md:px-12 py-4 md:py-5 rounded-full font-semibold text-base md:text-lg shadow-premium hover:shadow-premium-hover transition-all duration-300 font-renner border border-white/20 hover:border-white/40"
+            style={{
+              fontWeight: 300,
+              fontFamily: "Renner*",
+              fontSize: "22px",
+              lineHeight: "100%",
+              letterSpacing: "0%",
+            }}
+          >
+            <span className="relative z-10">Shop Now</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700 ease-out rounded-full" />
+          </motion.button>
+        </div>
+      )}
 
       {/* Premium Navigation Arrows - Hidden on mobile */}
       <AnimatePresence>
@@ -179,8 +181,18 @@ export default function BannerSlider() {
               whileTap={{ scale: 0.95 }}
               aria-label="Previous banner"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </motion.button>
 
@@ -195,8 +207,18 @@ export default function BannerSlider() {
               whileTap={{ scale: 0.95 }}
               aria-label="Next banner"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </motion.button>
           </>
@@ -212,8 +234,18 @@ export default function BannerSlider() {
           whileTap={{ scale: 0.95 }}
           aria-label="Previous banner"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </motion.button>
 
@@ -224,22 +256,32 @@ export default function BannerSlider() {
           whileTap={{ scale: 0.95 }}
           aria-label="Next banner"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </motion.button>
       </div>
 
       {/* Premium Dots Indicator */}
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2 md:space-x-3">
+      <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-20 hidden md:flex space-x-2 md:space-x-3">
         {banners.map((_, index) => (
           <motion.button
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
               index === currentIndex
-                ? 'bg-white scale-110 shadow-glow'
-                : 'bg-white/50 hover:bg-white/70 hover:scale-110'
+                ? "bg-white scale-110 shadow-glow"
+                : "bg-white/50 hover:bg-white/70 hover:scale-110"
             }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
@@ -260,4 +302,4 @@ export default function BannerSlider() {
       </div>
     </div>
   );
-} 
+}
