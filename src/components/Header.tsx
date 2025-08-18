@@ -60,7 +60,7 @@ export default function Header() {
     <>
       {/* Mobile Header - Only visible on mobile */}
       <motion.header
-        className="fixed top-0 z-[60] w-full md:hidden"
+        className="fixed top-0 z-[60] w-full md:hidden p-1 "
         initial={false}
         animate={{
           width: "100%",
@@ -75,7 +75,7 @@ export default function Header() {
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
       >
-        <nav className="relative bg-white border border-white/20 shadow-premium w-full h-full flex items-center px-4">
+        <nav className="relative bg-white border border-white/20 shadow-premium w-full h-full flex items-center px-4 rounded-[15px]">
           {/* Left: Hamburger Menu */}
           <div className="absolute left-4 top-1/2 -translate-y-1/2">
             <motion.button
@@ -136,7 +136,7 @@ export default function Header() {
                   fill
                   className="object-contain drop-shadow-lg"
                   priority
-                  sizes="40px"
+                  sizes="60px"
                   quality={95}
                   placeholder="blur"
                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
@@ -215,7 +215,7 @@ export default function Header() {
 
       {/* Desktop Header - Only visible on desktop */}
       <motion.header
-        className="fixed top-0 z-50 hidden md:block"
+        className="fixed top-0 z-50 hidden md:block "
         initial={false}
         animate={{
           width: isScrolled ? "100%" : "1440px",
@@ -242,9 +242,9 @@ export default function Header() {
                 href="#about"
                 className="text-gray-800 hover:text-[#8B4513] transition-all duration-300 font-renner relative group"
                 style={{
-                  fontWeight: 100,
-                  fontFamily: "Renner",
-                  fontSize: "18px",
+                  fontWeight: 300,
+                  fontFamily: "Renner*",
+                  fontSize: "22px",
                   lineHeight: "100%",
                   letterSpacing: "0%",
                 }}
@@ -257,9 +257,9 @@ export default function Header() {
                 href="#shop"
                 className="text-gray-800 hover:text-[#8B4513] transition-all duration-300 font-renner relative group"
                 style={{
-                  fontWeight: 100,
-                  fontFamily: "Renner",
-                  fontSize: "18px",
+                  fontWeight: 300,
+                  fontFamily: "Renner*",
+                  fontSize: "22px",
                   lineHeight: "100%",
                   letterSpacing: "0%",
                 }}
@@ -309,9 +309,9 @@ export default function Header() {
               <motion.button
                 className="flex items-center space-x-1 text-gray-800 hover:text-[#8B4513] transition-all duration-300 font-renner relative group"
                 style={{
-                  fontWeight: 100,
-                  fontFamily: "Renner",
-                  fontSize: "18px",
+                  fontWeight: 300,
+                  fontFamily: "Renner*",
+                  fontSize: "22px",
                   lineHeight: "100%",
                   letterSpacing: "0%",
                 }}
@@ -427,7 +427,7 @@ export default function Header() {
                     className="block text-lg font-renner text-gray-800 hover:text-[#8B4513] transition-all duration-300 py-3 border-b border-gray-100"
                     style={{
                       fontWeight: 300,
-                      fontFamily: "Renner",
+                      fontFamily: "Renner*",
                       fontSize: "18px",
                       lineHeight: "100%",
                       letterSpacing: "0%",
@@ -442,7 +442,7 @@ export default function Header() {
                     className="block text-lg font-renner text-gray-800 hover:text-[#8B4513] transition-all duration-300 py-3 border-b border-gray-100"
                     style={{
                       fontWeight: 300,
-                      fontFamily: "Renner",
+                      fontFamily: "Renner*",
                       fontSize: "18px",
                       lineHeight: "100%",
                       letterSpacing: "0%",
@@ -457,7 +457,7 @@ export default function Header() {
                     className="block text-lg font-renner text-gray-800 hover:text-[#8B4513] transition-all duration-300 py-3 border-b border-gray-100"
                     style={{
                       fontWeight: 300,
-                      fontFamily: "Renner",
+                      fontFamily: "Renner*",
                       fontSize: "18px",
                       lineHeight: "100%",
                       letterSpacing: "0%",
