@@ -281,13 +281,13 @@ export default function Home() {
               <motion.h3
                 className="text-4xl md:text-5xl lg:text-7xl font-bold text-[#8B4513] font-samantha"
                 style={{
-                  fontWeight: 300,
+                  fontWeight: 400,
                   fontSize: "clamp(36px, 6vw, 60px)",
                   lineHeight: "120%",
                   letterSpacing: "0%",
                   fontStyle: "italic",
                   color: "#703133",
-                  fontFamily: "Renner*",
+                  fontFamily: "Samantha Signature",
                 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}

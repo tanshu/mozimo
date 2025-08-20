@@ -119,9 +119,10 @@ export default function Header() {
               transition={{ duration: 0.6 }}
             >
               <motion.div
-                className="relative w-10 h-10"
+                className="relative"
                 animate={{
-                  scale: isScrolled ? 1.1 : 1,
+                  width: isScrolled ? 40 : 60, // shrink on scroll
+                  height: isScrolled ? 40 : 60,
                 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 whileHover={{
@@ -136,7 +137,7 @@ export default function Header() {
                   fill
                   className="object-contain drop-shadow-lg"
                   priority
-                  sizes="60px"
+                  sizes="(max-width: 768px) 40px, 96px"
                   quality={95}
                   placeholder="blur"
                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
@@ -272,35 +273,28 @@ export default function Header() {
 
             {/* Center Logo */}
             <motion.div
-              className="flex items-center justify-center absolute left-1/2 transform -translate-x-1/2"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              className="relative"
+              animate={{
+                width: isScrolled ? 75 : 96, // shrink logo when scrolled
+                height: isScrolled ? 75 : 96,
+                scale: isScrolled ? 1 : 1, // optional subtle scaling
+              }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              whileHover={{
+                scale: 1.15,
+                rotate: 5,
+                transition: { duration: 0.3 },
+              }}
             >
-              <motion.div
-                className="relative w-12 h-12"
-                animate={{
-                  scale: isScrolled ? 1.1 : 1,
-                }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                whileHover={{
-                  scale: 1.15,
-                  rotate: 5,
-                  transition: { duration: 0.3 },
-                }}
-              >
-                <Image
-                  src="/logo/logo.svg"
-                  alt="Mozimo Logo"
-                  fill
-                  className="object-contain drop-shadow-lg"
-                  priority
-                  sizes="48px"
-                  quality={95}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                />
-              </motion.div>
+              <Image
+                src="/logo/logo.svg"
+                alt="Mozimo Logo"
+                fill
+                className="object-contain drop-shadow-lg"
+                priority
+                sizes="(max-width: 768px) 40px, 96px"
+                quality={95}
+              />
             </motion.div>
 
             {/* Right Icons */}
