@@ -241,7 +241,7 @@ export default function Home() {
               whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <video
-                src="https://qa-dugout.s3.ap-south-1.amazonaws.com/testing/v1.mp4"
+                src="https://qa-dugout.s3.ap-south-1.amazonaws.com/testing/06+-+Video.mov"
                 className="w-full h-full object-cover"
                 autoPlay
                 loop
@@ -281,13 +281,13 @@ export default function Home() {
               <motion.h3
                 className="text-4xl md:text-5xl lg:text-7xl font-bold text-[#8B4513] font-samantha"
                 style={{
-                  fontWeight: 400,
-                  fontSize: "clamp(36px, 6vw, 60px)",
-                  lineHeight: "120%",
-                  letterSpacing: "0%",
-                  fontStyle: "italic",
-                  color: "#703133",
                   fontFamily: "Samantha Signature",
+                  fontWeight: 400,
+                  fontStyle: "normal",
+                  fontSize: "clamp(35px, 8vw, 50px)",
+                  lineHeight: "clamp(20px, 4vw, 25px)",
+                  letterSpacing: "0%",
+                  color: "#703133",
                 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
@@ -437,13 +437,10 @@ export default function Home() {
         >
           In the Spotlight
         </motion.h2>
-        <div
-          className="w-full flex justify-center items-center overflow-hidden"
-          style={{ minHeight: "8rem md:10rem" }}
-        >
-          <div className="w-full max-w-[700px] overflow-hidden px-4">
+        <div className="w-full flex justify-center items-center py-8 md:py-12">
+          <div className="w-full max-w-[700px] px-4 overflow-hidden">
             <motion.div
-              className="flex gap-8"
+              className="flex gap-8 py-6"
               animate={{ x: `-${spotlightIndex * 152}px` }}
               transition={{ type: "spring", stiffness: 80, damping: 18 }}
             >
@@ -457,8 +454,8 @@ export default function Home() {
                       key={i}
                       className="w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 bg-white rounded-full flex items-center justify-center shadow-premium hover:shadow-premium-hover flex-shrink-0 transition-all duration-300"
                       style={{
-                        boxShadow: "0 4px 20px 0 rgba(60,42,33,0.15)", // Increased blur and opacity
-                        margin: "8px", // Added margin to give space for shadow
+                        boxShadow: "0 4px 20px 0 rgba(60,42,33,0.15)",
+                        margin: "20px 8px",
                       }}
                       whileHover={{
                         scale: 1.1,
