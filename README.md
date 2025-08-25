@@ -153,6 +153,3 @@ For questions or support, contact Mozing Chocolate:
 - Phone: 0172-4054514
 - Address: SCO 8, Inner Market, 9.D. Sector 9, Chandigarh, 160009
 
----
-
-Made with ❤️ for Mozing Chocolate
