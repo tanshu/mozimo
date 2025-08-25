@@ -241,7 +241,7 @@ export default function Home() {
               whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               <video
-                src="https://qa-dugout.s3.ap-south-1.amazonaws.com/testing/06+-+Video.mov"
+                src="https://qa-dugout.s3.ap-south-1.amazonaws.com/testing/v1.mp4"
                 className="w-full h-full object-cover"
                 autoPlay
                 loop
