@@ -17,6 +17,15 @@ export default function ProductCategory() {
     "Dragees",
     "Gelatos",
   ];
+
+  const categoryLinks = [
+    "https://shop.mozimo.in/#bar",
+    "https://shop.mozimo.in/#barks",
+    "https://shop.mozimo.in/#pralines",
+    "https://shop.mozimo.in/#spreads",
+    "https://shop.mozimo.in/#dragees",
+    "https://shop.mozimo.in/",
+  ];
   const categoryImages = [
     "/categories/c1.svg",
     "/categories/c2.svg",
@@ -83,7 +92,10 @@ export default function ProductCategory() {
           transition={{ duration: 0.2, delay: idx * 0.02 }}
           viewport={{ once: true }}
         >
-          <button
+          <a
+            href={categoryLinks[idx]}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`group flex items-center gap-4 w-full text-left font-moneta transition-all duration-100 ease-out will-change-transform
               ${
                 isActive
@@ -122,7 +134,7 @@ export default function ProductCategory() {
               />
             </div>
             <span className="will-change-transform">{category}</span>
-          </button>
+          </a>
         </motion.li>
       );
     });

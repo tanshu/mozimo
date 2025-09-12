@@ -3,10 +3,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -240,7 +242,7 @@ export default function Header() {
             {/* Left Navigation */}
             <div className="flex items-center space-x-16">
               <motion.a
-                href="#about"
+                href={pathname === "/about" ? "/" : "/about"}
                 className="text-gray-800 hover:text-[#8B4513] transition-all duration-300 font-renner relative group"
                 style={{
                   fontWeight: 300,
@@ -251,11 +253,13 @@ export default function Header() {
                 }}
                 whileHover={{ scale: 1.02 }}
               >
-                About us
+                {pathname === "/about" ? "Home" : "About us"}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#8B4513] to-[#DAA520] transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
               <motion.a
-                href="#shop"
+                href="https://shop.mozimo.in/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-800 hover:text-[#8B4513] transition-all duration-300 font-renner relative group"
                 style={{
                   fontWeight: 300,
@@ -417,7 +421,7 @@ export default function Header() {
                 {/* Mobile Navigation Links */}
                 <div className="space-y-4">
                   <motion.a
-                    href="#about"
+                    href={pathname === "/about" ? "/" : "/about"}
                     className="block text-lg font-renner text-gray-800 hover:text-[#8B4513] transition-all duration-300 py-3 border-b border-gray-100"
                     style={{
                       fontWeight: 300,
@@ -429,10 +433,12 @@ export default function Header() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     whileHover={{ x: 10 }}
                   >
-                    About us
+                    {pathname === "/about" ? "Home" : "About us"}
                   </motion.a>
                   <motion.a
-                    href="#shop"
+                    href="https://shop.mozimo.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block text-lg font-renner text-gray-800 hover:text-[#8B4513] transition-all duration-300 py-3 border-b border-gray-100"
                     style={{
                       fontWeight: 300,

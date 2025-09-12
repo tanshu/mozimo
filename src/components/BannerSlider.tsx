@@ -141,7 +141,10 @@ export default function BannerSlider() {
       {/* Premium Shop Now Button */}
       {currentIndex === 0 && (
         <div className="absolute bottom-16 md:bottom-20 left-1/2 transform -translate-x-1/2 z-10">
-          <motion.button
+          <motion.a
+            href="https://shop.mozimo.in/"
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -151,7 +154,7 @@ export default function BannerSlider() {
               transition: { duration: 0.3 },
             }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-[#3C2A21] px-8 md:px-12 py-4 md:py-5 rounded-full font-semibold text-base md:text-lg shadow-premium hover:shadow-premium-hover transition-all duration-300 font-renner border border-white/20 hover:border-white/40"
+            className="bg-white text-[#3C2A21] px-8 md:px-12 py-4 md:py-5 rounded-full font-semibold text-base md:text-lg shadow-premium hover:shadow-premium-hover transition-all duration-300 font-renner border border-white/20 hover:border-white/40 inline-block"
             style={{
               fontWeight: 300,
               fontFamily: "Renner*",
@@ -161,7 +164,7 @@ export default function BannerSlider() {
             }}
           >
             <span className="relative z-10">Shop Now</span>
-          </motion.button>
+          </motion.a>
         </div>
       )}
 
