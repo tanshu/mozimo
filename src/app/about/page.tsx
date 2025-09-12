@@ -191,7 +191,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                are the proud founders of Mozimo, a bean-to-bar chocolate shop that celebrates the rich and distinctive flavors of single origin cocoa beans. Their journey with Mozimo has been a passionate pursuit of creating exceptional chocolate that tantalizes the taste buds and tells the unique story of each cocoa bean's origin.
+                are the proud founders of Mozimo, a bean-to-bar chocolate shop that celebrates the rich and distinctive flavors of single origin cocoa beans. Their journey with Mozimo has been a passionate pursuit of creating exceptional chocolate that tantalizes the taste buds and tells the unique story of each cocoa bean&apos;s origin.
               </motion.p>
             </motion.div>
           </div>
@@ -255,7 +255,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                With over 15 years of hospitality experience, these avid travelers scoured the globe for the finest cocoa beans and techniques. Deep in remote cocoa farms, they cultivated relationships with farmers committed to sustainability. Carefully selecting beans, they honor each harvest's stories. In their cozy workshop, they roast, crack, and refine beans with modern techniques, capturing their essence in every Mozimo chocolate bar.
+                With over 15 years of hospitality experience, these avid travelers scoured the globe for the finest cocoa beans and techniques. Deep in remote cocoa farms, they cultivated relationships with farmers committed to sustainability. Carefully selecting beans, they honor each harvest&apos;s stories. In their cozy workshop, they roast, crack, and refine beans with modern techniques, capturing their essence in every Mozimo chocolate bar.
               </motion.p>
             </motion.div>
 

@@ -59,7 +59,7 @@ export default function ProductCategory() {
     };
 
     preloadImages();
-  }, []);
+  }, [categoryImages]);
 
   // Ultra-fast animation variants (no delays)
   const fadeInLeft = {
@@ -138,7 +138,7 @@ export default function ProductCategory() {
         </motion.li>
       );
     });
-  }, [currentCategory, handleCategoryChange]);
+  }, [currentCategory, handleCategoryChange, categories, categoryImages, categoryLinks]);
 
   // Ultra-optimized image switcher with instant transitions
   const categoryImageComponent = useMemo(
@@ -177,7 +177,7 @@ export default function ProductCategory() {
         ))}
       </div>
     ),
-    [currentCategory]
+    [currentCategory, categories, categoryImages]
   );
 
   return (
