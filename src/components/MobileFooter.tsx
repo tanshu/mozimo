@@ -125,7 +125,9 @@ export default function MobileFooter() {
               <div className="flex">
                 {/* Social icons with original animations */}
                 <motion.a
-                  href="#"
+                  href="https://www.facebook.com/share/16vPmvcQV7/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:opacity-80 transition-all duration-300 p-2 rounded-full hover:bg-white/20 backdrop-blur-sm"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -144,7 +146,9 @@ export default function MobileFooter() {
                   </svg>
                 </motion.a>
                 <motion.a
-                  href="#"
+                  href="https://www.instagram.com/mozimo.choc?igsh=bTVzbGo0enV3b3Jn"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:opacity-80 transition-all duration-300 p-2 rounded-full hover:bg-white/20 backdrop-blur-sm"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -163,7 +167,9 @@ export default function MobileFooter() {
                   </svg>
                 </motion.a>
                 <motion.a
-                  href="#"
+                  href="https://www.youtube.com/@MozimoChocolates"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:opacity-80 transition-all duration-300 p-2 rounded-full hover:bg-white/20 backdrop-blur-sm"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -182,7 +188,9 @@ export default function MobileFooter() {
                   </svg>
                 </motion.a>
                 <motion.a
-                  href="#"
+                  href="https://www.linkedin.com/company/mozimochocolates/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:opacity-80 transition-all duration-300 p-2 rounded-full hover:bg-white/20 backdrop-blur-sm"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
