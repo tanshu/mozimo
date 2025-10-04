@@ -1,0 +1,23 @@
+---
+registry: registry.tanshu.com
+username: ta-registry
+password: ff28a01f00c0f39315d94cd9dcb1e554968dba25676a8ea5f2be34e96a9a099f
+
+title: mozimo
+tag: latest
+
+host_directory: "/var/lib/{{ title }}"
+
+host: "www.mozimo.in"
+
+docker_network: "{{ title }}_net"
+
+docker_image: "{{ registry }}/{{ title }}:{{ tag }}"
+docker_container: "{{ title }}"
+docker_port: 3000
+
+instagram_token: IGQWRQSUY4b3RQWU9ZARHlVVUFDaWxJZAWFOUVllM0NxMk1zSHJ5X2JGc2dpRUxyTjBaeDNhUm0yaFZAQeUotVU9VUmFEQkJxU25CdFp3bURSZAGtnLXhCZAHVId21SWUNiNjVzc0pjZAlhPNDRxTDFzZAEQ0ZAXoyVlpUaHcZD
+
+
+caddy_container: caddy
+caddyfile_path: /var/lib/caddy/conf/Caddyfile

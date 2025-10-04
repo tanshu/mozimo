@@ -1,0 +1,14 @@
+#################################################
+# DO Community Playbooks: Docker
+#################################################
+---
+- hosts: monoco
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  roles:
+    - upload
+    - network
+    - mozimo
+    - caddy

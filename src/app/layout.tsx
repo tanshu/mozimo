@@ -64,6 +64,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Mobile viewport meta tag */}
+        <meta name="google-site-verification" content="vV-fEo3yXs8m0NUhB6JWhYI4pSH0uYVkbT8pgUWuU1I" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         
         <link rel="preconnect" href="https://fonts.googleapis.com" />

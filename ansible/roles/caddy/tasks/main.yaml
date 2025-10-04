@@ -1,0 +1,29 @@
+---
+- name: Read current Caddyfile
+  ansible.builtin.slurp:
+    path: "{{ caddyfile_path }}"
+  register: caddyfile_raw
+
+- name: Decode Caddyfile content
+  set_fact:
+    caddyfile_content: "{{ caddyfile_raw['content'] | b64decode }}"
+
+- name: Build snippet block from variables
+  set_fact:
+    snippet_block: |
+      {{ host }} {
+          reverse_proxy {{ docker_container }}:{{ docker_port }}
+      }
+
+- name: Check if snippet already exists
+  set_fact:
+    snippet_present: "{{ snippet_block in caddyfile_content }}"
+
+- name: Add snippet if missing
+  ansible.builtin.blockinfile:
+    path: "{{ caddyfile_path }}"
+    marker: "# {mark} Ansible managed Caddy snippet for {{ host }}"
+    block: "{{ snippet_block }}"
+    create: yes
+  when: not snippet_present
+  notify: "Reload Caddy"

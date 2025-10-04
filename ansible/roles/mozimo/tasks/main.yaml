@@ -1,0 +1,24 @@
+---
+# Tasks for docker role
+- name: Log in to Docker registry
+  docker_login:
+    registry: "{{ registry }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+
+- name: Pull Mozimo image
+  docker_image:
+    name: "{{ docker_image }}"
+    source: pull
+    state: present
+    force_source: yes
+
+- name: Create Mozimo container
+  docker_container:
+    name: "{{ docker_container }}"
+    image: "{{ docker_image }}"
+    state: started
+    restart_policy: "unless-stopped"
+    env_file: "{{ host_directory }}/.env"
+    networks:
+      - name: "{{ docker_network }}"

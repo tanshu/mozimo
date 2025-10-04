@@ -1,0 +1,5 @@
+---
+# Handlers for Caddy role
+- name: Reload Caddy configuration
+  ansible.builtin.command: "docker exec -w /etc/caddy {{ caddy_container }} caddy reload"
+  listen: "Reload Caddy"

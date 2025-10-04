@@ -1,0 +1,11 @@
+---
+# Tasks for upload role
+- name: Ensure Host Directory exists
+  file:
+    path: "{{ host_directory }}"
+    state: directory
+
+- name: Upload the .env file
+  template:
+    src: "files/.env"
+    dest: "{{ host_directory }}/.env"

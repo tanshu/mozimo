@@ -1,0 +1,8 @@
+---
+- name: Ensure 'mozimo' Docker network exists
+  docker_network:
+    name: "{{ docker_network }}"
+    state: present
+    connected:
+      - name: caddy
+    appends: yes
